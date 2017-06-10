@@ -1,0 +1,129 @@
+﻿@model List<shopping.Models.Product2>
+
+<style type="text/css">
+    .ov {
+        border:1px solid red;
+    }
+    .ou {
+        border:0px;
+    }
+    #im {
+        margin-top:0px;
+        padding-top:0px;
+    }
+    table tr td {
+        position:relative;
+    }
+    table tr td a img {
+        position:absolute;
+        top:0px;
+        left:0px;
+    }
+        table tr td #p1 {
+            width:222px;
+            height:30px;
+        font-size:20px;
+        color:red;
+        position:absolute;
+        top:260px;
+        left:0px;
+        }
+            table tr td #p1 #pay {
+                float:right;
+                color:gray;
+                font-size:10px;
+                line-height:30px;
+            }
+    table td #p2 {
+        
+        width:220px;
+        height:50px;
+        position:absolute;
+        top:290px;
+        left:0px;
+        font-size:8px;
+    }
+    table td #p3 {
+        width:220px;
+        height:30px;
+        position:absolute;
+        bottom:5px;
+        left:5px;
+    }
+        table td #p3 #imgL {
+            position:absolute;
+            left:2px;
+            bottom:3px;
+        }
+        table td #p3 #imgR {
+            position:absolute;
+            right:5px;
+            bottom:3px;
+        }
+    tr td a {
+        display:block;
+        width:220px;
+        line-height:normal;
+    }
+    #p2 a:hover {
+        text-decoration:underline;
+        color:red;
+    }
+</style>
+<script type="text/javascript">
+    function over(d) {
+        var m = document.getElementById(d);
+        m.className = "ov";
+    }
+    function out(b) {
+        var ou = document.getElementById(b);
+        ou.className = "ou";
+    }
+</script>
+  @using (Html.BeginForm("AddG","Home"))
+  {
+       <table id="ta" style="margin:0 auto; border:1px solid yellow;" cellspacing="20"  >
+       @{
+           
+           for (int j = 0; j < Model.Count / 4 + 1; j++)
+           {
+                   <tr>
+                       @{
+               for (int i = 4 * j; i < Model.Count; i++)
+               {
+                   
+                           <td id=i style="height:355px;width:222px;border:1px solid gray;" onmousemove="over(i)" onmouseout="out(i)">
+                           @*<h3>@Model[i].Name</h3>*@
+                           <a href="@Url.Action("AddG", new { id = @Model[i].Id})"><img src="@Model[i].ImageUrl" width="222px" height="250px" id="im"/></a><br />
+                           <div id="p1">
+                               ￥@Model[i].Price<img src="~/Images/tb.png" />
+                               <span id="pay">
+                                   <label>0</label>人付款
+                               </span>
+                           </div>
+                           <div id="p2">
+                              @* <a href="#">@Model[i].Description </a>*@
+                               @Html.ActionLink(@Model[i].Description, "AddG", new {id=@Model[i].Id })
+                           </div>
+                          <div id="p3">
+                              <img src="~/Images/tbl.png" id="imgL"/>
+                              <img src="~/Images/tbr.png" id="imgR"/>
+                          </div>
+                           
+                           </td>
+                   if ((i + 1) % 4 == 0)
+                   {
+                       break;
+                   }
+                   else
+                   {
+                       continue;
+                   }
+
+               }
+                       }
+                   </tr>
+               }
+           }
+   </table>
+  }

@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "iPhone";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<shopping.Models.Product2>
+    <style type="text/css">
+ 
+        #ta {
+            padding:0px;
+            text-align:center;
+            margin:0 auto;
+        }
+    </style>
+   <table id="ta" >
+       @{
+           
+           for (int j = 0; j < Model.Count / 4 + 1; j++)
+           {
+                   <tr>
+                       @{
+               for (int i = 4 * j; i < Model.Count; i++)
+               {
+                   
+                  
+                           <td style="height:200px;width:180px;border:1px solid yellow;">
+                           <h3>@Model[i].Name</h3>
+                           <p><img src="@Model[i].ImageUrl" width="100px" height="100px" /></p>
+                           <p>@Model[i].Description</p>
+                           <p>@Model[i].Price</p>
+                           </td>
+                   if ((i + 1) % 4 == 0)
+                   {
+                       break;
+                   }
+                   else
+                   {
+                       continue;
+                   }
+
+               }
+                       }
+                   </tr>
+               }
+           }
+   </table>

@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+@using (Html.BeginForm("Register", "Member"))
+{
+    <p><label>Email</label><input type="text" name="Em" /></p>
+    <p><label>密码</label><input type="password" name="pa" /></p>
+    <p><label>姓名</label><input type="text" name="nm" /></p>
+    <p><input type="submit" value="注册" />
+    </p>
+}

@@ -1,0 +1,106 @@
+﻿@model List<shopping.Models.Cartcs>
+@using System.Data;
+
+<style type="text/css">
+  #left {
+        width:200px;
+        float:left;
+    }
+   a {
+        display:block;
+        width:100px;
+        height:30px;
+        line-height:30px;
+        text-decoration:none;
+        float:left;
+        font-size:10px;
+        margin:0px;
+    }
+    #s_a a {
+        color:red;
+    }
+    #n {
+        color:red;
+    }
+    .mt {
+        display:block;
+    }
+</style>
+@section top{
+    <div id="left">
+        <span id="s_a">@Html.ActionLink("返回首页", "MyView", "Home")</span>
+       </div>
+    
+}
+
+<table cellspacing="15">
+    <tr>
+        <td style="width:70px;">商品：</td>
+        <td style="width:70px;"></td>
+        <td style="width:482px"></td>
+        @{
+            using (Html.BeginForm("RemoveAll","Home"))
+            {
+                <td style="width:380px;"><input type="submit" value="全部删除" /></td>
+            }
+        }
+        
+    </tr>
+    @{
+        for (int i = 0; i < Model.Count; i++)
+        {
+            using (Html.BeginForm("RemoveG", "Home",  new { id=@Model[i].Id }))
+           {
+               <tr class="i+1">
+                   <td rowspan="2"></td>
+               <td rowspan="2"><img src="@Model[i].ImageUrl" width="100px" height="80px" /></td>
+               <td style="text-align:left;font-size:10px" id="des">@Model[i].Description</td>
+               <td rowspan="2"><input type="submit" value="移除" /></td>
+           </tr>
+           <tr class="i+1">
+              <td style="position:relative;">
+                <p style="float:left;color:red" name="pri" >￥@Model[i].Price</p>
+                <p style="position:absolute;left:200px;"><b>x</b>@Model[i].Amount</p>
+              </td>
+         </tr>
+           }
+        }
+    }
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        @{
+            using (Html.BeginForm("SumAll","Home"))
+            {
+                <td style="width:380px;"><input type="submit" value="结算" /></td>
+            }
+        }
+        
+</table>
+<p id="n">
+   总价：@ViewBag.nm
+</p>
+
+
+
+
+
+
+<script type="text/javascript">
+    function sh() {
+        var m = document.getElementsByTagName("input");
+        for (var j = 1; j < m.length; j++) {
+            if (m[j].checked == true) {
+                var n = document.getElementsByClassName(m[j]);
+                n[0].parentNode.removeChild(n[0]);
+            }
+        }
+
+    }
+
+    function shA() {
+        var pv = document.getElementById("n");
+        pv.className = "mt";
+    }
+</script>

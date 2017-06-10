@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    #main {
+        width:1002px;
+        text-align:center;
+    }
+    table {
+        margin:0 auto;
+    }
+</style>
+<div id="main">
+    @using (Html.BeginForm("MyView","Home"))
+    {
+    <table style="border:0px; padding:0px; width:300px;height:200px;">
+    <tr>
+        <td style="width:50px;">用户名</td>
+        <td><input type="text" style="width:180px;height:25px;" name="txt" /></td>
+    </tr>
+    <tr>
+        <td>密码</td>
+        <td><input type="password" style="width:180px;height:25px;" name="pas"/></td>
+    </tr>
+    <tr>
+        <td colspan="2"><input type="submit" value="登录" style="width:260px;height:40px;background-color:red;border:1px solid red;"/></td>
+    </tr>
+    <tr>
+        <td colspan="2">@Html.ActionLink("注册","Register")</td>
+    </tr>
+</table>
+    }
+
+</div>

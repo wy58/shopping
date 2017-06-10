@@ -1,0 +1,175 @@
+﻿@{
+    ViewBag.Title = "MyView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    p {
+        font-size:10px;
+        color:gray;
+    }
+    #left {
+        width:200px;
+        float:left;
+    }
+    #right {
+        width:200px;
+        float:right;
+    }
+    a {
+        display:block;
+        width:100px;
+        height:30px;
+        line-height:30px;
+        text-decoration:none;
+        float:left;
+        font-size:10px;
+        margin:0px;
+    }
+    #s_a a {
+        color:red;
+    }
+    #b_top {
+        margin-top:25px;
+        width:1002px;
+        height:80px;
+    }
+    #img {
+        width:200px;
+        height:80px;
+        line-height:80px;
+        float:left;
+        /*background-color:blue;*/
+    }
+    #inp {
+       width:802px;
+       height:70px;
+       padding-top:10px;
+       padding-left:0px;
+       float:left;
+       /*background-color:yellow;*/
+       position:relative;
+    }
+    #in1 {
+        position:absolute;
+        left:0px;
+    }
+    #in2 {
+        position:absolute;
+        left:400px;
+    }
+/*手机分类*/
+    #fl {
+        margin-top:20px;
+        width:1000px;
+        height:40px;
+        line-height:42px;
+        border:1px solid gray;
+    }
+    #ap, #h, #j, #v {
+        display:block;
+        width:100px;
+        height:40px;
+        line-height:40px;
+        float:left;
+
+    }
+    #all1,#ap2,#hw3,#vivo5,#jl4{
+        width:1002px;
+        margin:0 auto;
+        /*background-color:blue;*/
+    }
+
+</style>
+
+ <script type="text/javascript">
+     window.onload = function () {
+         var all1 = document.getElementById("all1");
+         var ap2 = document.getElementById("ap2");
+         var hw3 = document.getElementById("hw3");
+         var jl4 = document.getElementById("jl4");
+         ap2.style.display = "none";
+         hw3.style.display = "none";
+         jl4.style.display = "none";
+         all1.style.display = "block";
+
+     }
+     function shA() {
+         var all1 = document.getElementById("all1");
+         var ap2 = document.getElementById("ap2");
+         var hw3 = document.getElementById("hw3");
+         var jl4 = document.getElementById("jl4");
+         ap2.style.display = "block";
+         hw3.style.display = "none";
+         jl4.style.display = "none";
+         all1.style.display = "none";
+     }
+     function shH() {
+         var all1 = document.getElementById("all1");
+         var ap2 = document.getElementById("ap2");
+         var hw3 = document.getElementById("hw3");
+         var jl4 = document.getElementById("jl4");
+         ap2.style.display = "none";
+         hw3.style.display = "block";
+         jl4.style.display = "none";
+         all1.style.display = "none";
+     }
+     function shJ() {
+         var all1 = document.getElementById("all1");
+         var ap2 = document.getElementById("ap2");
+         var hw3 = document.getElementById("hw3");
+         var jl4 = document.getElementById("jl4");
+         ap2.style.display = "none";
+         hw3.style.display = "none";
+         jl4.style.display = "block";
+         all1.style.display = "none";
+     }
+</script>
+
+
+
+@section top{
+        <div id="left">
+        <span id="s_a">@Html.ActionLink("亲，请登录", "login", "Member")</span>
+          @Html.ActionLink("免费注册","Register","Member")
+       </div>
+       <div id="right">
+                    @Html.ActionLink("我的购物车","GWC0","Home")
+           <a style="float:right;color:red;">您还没登录</a>
+       </div>
+    }
+
+<div id="b_top">
+    <div id="img">
+        <img src="~/Images/taobao.png"/>
+    </div>
+    <div id="inp">
+            <input type="search" style="width:400px;height:38px;border:1px solid red;" id="in1"/>
+            <input type="button" value="搜索" style="width:70px; height:38px;background-color:red;border:1px solid red;" id="in2"/>
+    </div>
+</div>
+<p>所有分类></p>
+<div id="main">
+<div id="fl">
+    <label id="ap"><input type="radio" id="apple" name="l" onclick="shA()"/>苹果</label>
+    <label id="h"><input type="radio" id="hw" name="l" onclick="shH()"/>华为</label>
+    <label id="j"><input type="radio" id="jl" name="l" onclick="shJ()"/>金立</label>
+</div>
+<div id="all1">
+       @Html.Action("GetAll")
+</div>
+    <div id="ap2">
+         @Html.Action("iPhon2")
+    </div>
+    <div id="hw3">
+         @Html.Action("HW")
+    </div>
+    <div id="jl4">
+         @Html.Action("JL")
+    </div>
+</div>
+    
+<script type="text/javascript">
+    function sh() {
+
+    }
+</script>
